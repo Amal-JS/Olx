@@ -10,37 +10,48 @@ const Footer = () => {
         <div>
           POPULAR LOCATIONS
           <ul class="list-none">
-            <li>Kolkata</li>
-            <li>Mumbai</li>
-            <li>Chennai</li>
-            <li>Pune</li>
+            <li className="text-sm">Kolkata</li>
+            <li className="text-sm">Mumbai</li>
+            <li className="text-sm">Chennai</li>
+            <li className="text-sm">Pune</li>
           </ul>
         </div>
 
-        
-
-        <div>
-          POPULAR LOCATIONS
-          <ul class="list-none">
-            <li>Kolkata</li>
-            <li>Mumbai</li>
-            <li>Chennai</li>
-            <li>Pune</li>
-          </ul>
-        </div>
+    
 
         <div>
           About OLX 
           <ul class="list-none">
-            <li>Careers</li>
-            <li>Contact Us</li>
-            <li>OLXPeople</li>
-            <li>Waah Jobs</li>
+            <li className="text-sm">Careers</li>
+            <li className="text-sm">Contact Us</li>
+            <li className="text-sm">OLXPeople</li>
+            <li className="text-sm">Waah Jobs</li>
           </ul>
         </div>
 
+
+
+        <div>
+          POPULAR LOCATIONS
+          <ul class="list-none">
+            <li className="text-sm">Kolkata</li>
+            <li className="text-sm">Mumbai</li>
+            <li className="text-sm">Chennai</li>
+            <li className="text-sm">Pune</li>
+          </ul>
+        </div>
+
+
+
         <div>
           <div className="h-25 flex justify-evenly">
+
+          <i className="fa-brands fa-square-instagram  px-4" style={{color:"#374a4d",fontSize:'34px'}}></i>
+
+          <i class="fa-brands fa-facebook-f px-4" style={{color:"#374a4d",fontSize:'34px'}}></i>
+
+
+          <i class="fa-brands fa-twitter px-4" style={{color:"#374a4d",fontSize:'34px'}}></i>
 
           </div>
           <div className="h-25"></div>

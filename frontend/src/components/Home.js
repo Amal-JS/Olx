@@ -3,6 +3,9 @@ import Header from './Header';
 import Card from './Card';
 import Footer from './Footer';
 import Post from './Post';
+import ModalComponent from './Modal';
+
+
 const Home  = ()=> {
 
 return(
@@ -24,7 +27,7 @@ return(
 
 </div> */}
 
-<Post></Post>
+<ModalComponent />
 
 <Footer />
 

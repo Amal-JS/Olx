@@ -1,10 +1,22 @@
-import {React} from 'react'
+import {React , useState} from 'react'
 import './Header.css'
 import olxlogo from '../static/olxlogo.webp';
+import LoginModal from "./LoginModal";
+import SignUpModal from "./SignUpModal";
 
+const Header  = ()=> {
+    
+    const [loginModalOpened, changeLoginModalOpened] = useState(false);
+  const [signUpModalOpened, changesignUpnModalOpened] = useState(false);
 
-const Header  = (props)=> {
-    const {loginModal,signUpModal} = props;
+  const handleLoginModal = () => {
+    changeLoginModalOpened(!loginModalOpened);
+    changesignUpnModalOpened(false);
+  };
+  const handleSignUpModal = () => {
+    changesignUpnModalOpened(!signUpModalOpened);
+    changeLoginModalOpened(false);
+  };
    
 return(
     
@@ -31,9 +43,9 @@ return(
 </form>
 
 
-<button type="button" className="bg-transparent text-xl  pr-5 w-16 "><p className='underline font-semibold hover:no-underline hover:text-red-500' onClick={()=>loginModal()}>Login</p></button>
+<button type="button" className="bg-transparent text-xl  pr-5 w-16 "><p className='underline font-semibold hover:no-underline hover:text-red-500' onClick={handleLoginModal}>Login</p></button>
 
-<button type="button" className="bg-transparent text-xl  pr-5 w-16 mx-5 "><p className='underline font-semibold hover:no-underline hover:text-red-500' onClick={()=>signUpModal()}>SignUp</p></button>
+<button type="button" className="bg-transparent text-xl  pr-5 w-16 mx-5 "><p className='underline font-semibold hover:no-underline hover:text-red-500' onClick={handleSignUpModal}>SignUp</p></button>
 
 
 <button type="button" className="py-2 px-5 me-2 mb-1 text-xl font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-white-800 dark:text-black-800 dark:border-gray-600 dark:hover:text-dark dark:hover:bg-white-700 w-28"><i className="fa-solid fa-plus text-xl mr-2"></i>Sell</button>
@@ -72,7 +84,10 @@ return(
 
     </div>
 
+    <LoginModal modalStatus={loginModalOpened} />
+          <SignUpModal modalStatus={signUpModalOpened} />
     </div>
+
 )
 
 

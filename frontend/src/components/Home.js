@@ -1,63 +1,37 @@
-import {React} from 'react'
-import Header from './Header';
-import Card from './Card';
-import Footer from './Footer';
-import Post from './Post';
-import LoginModal from './LoginModal';  
-import SignUpModal  from  './SignUpModal';
-import {useState} from 'react'
- 
+import { React } from "react";
 
+import Card from "./Card";
 
-const Home  = ()=> {
+import { Link } from "react-router-dom";
+import ToastComponent from "./Toast";
 
-    const [loginModalOpened,changeLoginModalOpened] = useState(false)
-    const [signUpModalOpened,changesignUpnModalOpened] = useState(false)
+const Home = () => {
+  
 
-    const handleLoginModal = ()=> {
-        changeLoginModalOpened(!loginModalOpened)
-        changesignUpnModalOpened(false)
-       
-    }
-    const handleSignUpModal = ()=>{
-
-     changesignUpnModalOpened(!signUpModalOpened)
-     changeLoginModalOpened(false)
-    }
-    
-
-return(
+  return (
     <div>
-{/* Header component */}
+      
 
-<Header loginModal={handleLoginModal} signUpModal={handleSignUpModal}/>
+          <p className="text-4xl text-gray-900 dark:text-dark px-64 mt-8 mb-5 ">
+            Fresh Recommendations
+          </p>
 
-<p className="text-4xl text-gray-900 dark:text-dark px-64 mt-8 mb-5 ">Fresh Recommendations</p>
-
-<div className=' flex flex-wrap px-64 justify-evenly'>
-<Card />
-<Card />
-<Card />
-<Card />
-<Card />
-<Card />
-
+          <div className=" flex flex-wrap px-64 justify-evenly">
+            <Link to="post/1"><Card /></Link>
+            <Link to="post/2"><Card /></Link>
+            <Link to="post/3"><Card /></Link>
+            <Link to="post/4"><Card /></Link>
+            <Link to="post/5"><Card /></Link>
 
 
-</div>
+            
+          </div>
 
-<LoginModal modalStatus={loginModalOpened}/>
-<SignUpModal modalStatus={signUpModalOpened}/>
-
-<Footer />
-
-
-
+      
+        <ToastComponent message='hai amal well done'></ToastComponent>
+        
     </div>
-
-)
-
-
-}
+  );
+};
 
 export default Home;

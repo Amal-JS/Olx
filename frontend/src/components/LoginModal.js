@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useState } from "react";
 import Header from "./Header";
 import Card from "./Card";
 import Footer from "./Footer";
@@ -28,7 +28,20 @@ function hideDialog() {
 
 const LoginModal = ({modalStatus}) => {
 
+  const [loginInfo,changeLoginInfo] =useState({loginEmail:'',loginPassword:''})
+
   modalStatus ? showDialog() : hideDialog()
+
+  const handleLoginInput = (evt)=>{
+    console.log(loginInfo)
+    changeLoginInfo((prevState)=>{
+      
+     return {...prevState,
+        [evt.target.id] : evt.target.value
+      }
+
+    })
+  }
 
   return (
 
@@ -73,9 +86,11 @@ const LoginModal = ({modalStatus}) => {
                 <input
                   type="email"
                   id="loginEmail"
-                  className="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
+                  defaultValue={loginInfo.loginEmail}
+                  className="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-green-500 dark:focus:border-green-500"
                   placeholder="name@flowbite.com"
                   required
+                  onChange={handleLoginInput}
                 />
               </div>
               <div className="mb-5">
@@ -88,9 +103,11 @@ const LoginModal = ({modalStatus}) => {
                 <input
                   type="password"
                   id="loginPassword"
-                  className="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white  focus:ring-green-500 dark:focus:border-green-500"
+                  defaultValue={loginInfo.loginPassword}
+                  className="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark  focus:ring-green-500 dark:focus:border-green-500"
                   required
                   placeholder="password"
+                  onChange={handleLoginInput}
                 />
               </div>
             </form>
@@ -103,6 +120,7 @@ const LoginModal = ({modalStatus}) => {
           </div>
         </div>
       </div>
+      
     </div>
   );
 };

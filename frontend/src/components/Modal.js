@@ -44,20 +44,41 @@ return(
 
  
 
-<div id="dialog" className="fixed left-0 top-0 bg-transparent opacity-2 hidden w-screen h-screen transition-opacity " onClick={()=>hideDialog()}>
-    <div className="bg-white rounded shadow-md p-8 mx-auto my-20 w-1/4">
-        <div className="flex items-center gap-5">
-            <div className="bg-red-200 rounded-full p-5 text-red-500 flex items-center justify-center w-10 h-10">
-                
-            </div>
-            <div>
-                <h1 className="font-bold text-lg mb-2">Deactivate Account</h1>
-                <p>Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.</p>
+<div id="dialog" className="fixed left-0 top-0 bg-transparent opacity-2 hidden w-screen h-screen transition-opacity  " onClick={()=>hideDialog()}>
+    <div className="bg-white rounded shadow-md p-5 mx-auto my-20 w-1/4 h-full"   onClick={(e) => e.stopPropagation()}>
+                <p className='text-end'><i class="fa-solid fa-xmark text-3xl" onClick={()=>hideDialog()}></i></p>
+        <div className="flex justify-center gap-5 shadow ">
+        
+            <div className='p-3 m-3 text-center'>
+              
+                <i class="fa-solid fa-tv text-4xl m-3"></i>
+                    <p className='font-normal text-black-400 mb-2'> Help us become the safest place to sell and buy.</p>
+                    <i class="fa-solid fa-square-phone"></i>
             </div>
         </div>
-        <div className="flex justify-end gap-4 mt-5">
-            <button className="bg-gray-100 border border-gray-300 px-6 py-2 rounded text-black hover:bg-gray-200" onClick={()=>hideDialog()}>Cancel</button>
-            <button className="bg-red-500 px-6 py-2 rounded text-white hover:bg-red-600">Deactivate</button>
+
+        <div className='w-full p-3 m-3 rounded'>
+
+
+        <form class="max-w-sm mx-auto">
+  <div class="mb-5">
+    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Your email</label>
+    <input type="email" id="email" class="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="name@flowbite.com" required />
+  </div>
+  <div class="mb-5">
+    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Your password</label>
+    <input type="password" id="password" class="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white  focus:ring-green-500 dark:focus:border-green-500" required  placeholder='password'/>
+  </div>
+
+
+</form>
+
+
+        </div>
+
+        <div className="flex justify-center gap-4 mt-5">
+            
+            <button className="bg-red-500 px-6 py-2 rounded text-white hover:bg-red-600">Sign in</button>
         </div>
     </div>
 </div>

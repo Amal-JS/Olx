@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import Post from "./Post";
 
 function showDialog() {
-  console.log("shows");
+  
   let dialog = document.getElementById("loginDialog");
   if (dialog) {
     dialog.classList.remove("hidden");
@@ -16,7 +16,7 @@ function showDialog() {
 }
 
 function hideDialog() {
-  console.log("hide");
+ 
   let dialog = document.getElementById("loginDialog");
   if (dialog) {
     dialog.classList.add("opacity-0");
@@ -25,13 +25,15 @@ function hideDialog() {
     }, 500);
   }
 }
-const LoginModal = () => {
+
+const LoginModal = ({modalStatus}) => {
+
+  modalStatus ? showDialog() : hideDialog()
 
   return (
+
     <div>
-      <button className="px-4 py-2 rounded" onClick={() => showDialog()}>
-        Open Modal
-      </button>
+    
 
       <div
         id="loginDialog"

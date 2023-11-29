@@ -1,37 +1,53 @@
-import { React } from "react";
+import { React , useState} from "react";
 import Header from "./Header";
 import Card from "./Card";
 import Footer from "./Footer";
 import Post from "./Post";
 
-function showDialog() {
-  console.log("shows");
-  let dialog = document.getElementById("SignUpDialog");
-  if (dialog) {
-    dialog.classList.remove("hidden");
-    setTimeout(() => {
-      dialog.classList.remove("opacity-0");
-    }, 20);
-  }
-}
+const SignUpModal = ({modalStatus}) => {
 
-function hideDialog() {
-  console.log("hide");
-  let dialog = document.getElementById("SignUpDialog");
-  if (dialog) {
-    dialog.classList.add("opacity-0");
-    setTimeout(() => {
-      dialog.classList.add("hidden");
-    }, 500);
+    // based on the change in the modalStatus true or false  calls the showDialog or hideDialog function
+    modalStatus ? showDialog() : hideDialog()
+
+    const [newUser,changeNewUserDetails] = useState({username:'',password:'',email:'',phone:''})
+
+
+    
+function showDialog() {
+  
+    let dialog = document.getElementById("SignUpDialog");
+    if (dialog) {
+      dialog.classList.remove("hidden");
+      setTimeout(() => {
+        dialog.classList.remove("opacity-0");
+      }, 20);
+    }
   }
-}
-const SignUpModal = () => {
+  
+  function hideDialog() {
+    
+    let dialog = document.getElementById("SignUpDialog");
+    if (dialog) {
+      dialog.classList.add("opacity-0");
+      setTimeout(() => {
+        dialog.classList.add("hidden");
+      }, 500);
+    }
+  }
+
+
+  const handleInput =(e)=> {
+    const { id, value } = e.target;
+    // Update the state based on the input field's id
+    changeNewUserDetails((prevState) => ({
+      ...prevState,
+      [id]: value
+    }));
+  }
   
   return (
     <div>
-      <button className="px-4 py-2 rounded" onClick={() => showDialog()}>
-        Open Modal
-      </button>
+   
 
       <div
         id="SignUpDialog"
@@ -64,9 +80,11 @@ const SignUpModal = () => {
                 <input
                   type="username"
                   id="username"
-                  className="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
+                  defaultValue={newUser.username}
+                  className="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-green-500 dark:focus:border-green-500"
                   placeholder="Username"
                   required
+                  onChange={(e)=>handleInput}
                 />
               </div>
               <div className="mb-5">
@@ -79,9 +97,11 @@ const SignUpModal = () => {
                 <input
                   type="email"
                   id="email"
-                  className="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
+                  defaultValue={newUser.email}
+                  className="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-green-500 dark:focus:border-green-500"
                   placeholder="name@flowbite.com"
                   required
+                  onChange={(e)=>handleInput}
                 />
               </div>
               <div className="mb-5">
@@ -94,9 +114,11 @@ const SignUpModal = () => {
                 <input
                   type="phone"
                   id="phone"
-                  className="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
+                  defaultValue={newUser.phone}
+                  className="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-green-500 dark:focus:border-green-500"
                   placeholder="92200299202"
                   required
+                  onChange={(e)=>handleInput}
                 />
               </div>
               <div className="mb-5">
@@ -109,9 +131,11 @@ const SignUpModal = () => {
                 <input
                   type="password"
                   id="password"
-                  className="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white  focus:ring-green-500 dark:focus:border-green-500"
+                  defaultValue={newUser.password}
+                  className="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark  focus:ring-green-500 dark:focus:border-green-500"
                   required
                   placeholder="password"
+                  onChange={(e)=>handleInput}
                 />
               </div>
             </form>

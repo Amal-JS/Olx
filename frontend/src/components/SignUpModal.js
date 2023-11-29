@@ -7,16 +7,8 @@ import Post from "./Post";
 import ToastComponent from "./Toast";
 
 
-const SignUpModal = ({modalStatus}) => {
 
-    // based on the change in the modalStatus true or false  calls the showDialog or hideDialog function
-    modalStatus ? showDialog() : hideDialog()
-
-    const [newUser,changeNewUserDetails] = useState({username:'',password:'',email:'',phone:''})
-    const [toastMessage, setToastMessage] = useState("");
-    const navigate = useNavigate();
-
-    
+   
 function showDialog() {
   
     let dialog = document.getElementById("SignUpDialog");
@@ -39,6 +31,19 @@ function showDialog() {
     }
   }
 
+
+
+  
+const SignUpModal = ({modalStatus}) => {
+
+    // based on the change in the modalStatus true or false  calls the showDialog or hideDialog function
+    modalStatus ? showDialog() : hideDialog()
+
+    const [newUser,changeNewUserDetails] = useState({username:'',password:'',email:'',phone:''})
+    const [toastMessage, setToastMessage] = useState("");
+    const navigate = useNavigate();
+
+ 
 
   const handleInput =(e)=> {
     const { id, value } = e.target;
@@ -190,6 +195,7 @@ console.log(id, value)
       {toastMessage && (
         <ToastComponent message={toastMessage} onClose={() => setToastMessage("")} />
       )}
+      
     </div>
   );
 };

@@ -3,6 +3,7 @@ import Header from "./Header";
 import Card from "./Card";
 import Footer from "./Footer";
 import Post from "./Post";
+import ToastComponent from './Toast';
 
 function showDialog() {
   
@@ -29,11 +30,13 @@ function hideDialog() {
 const LoginModal = ({modalStatus}) => {
 
   const [loginInfo,changeLoginInfo] =useState({loginEmail:'',loginPassword:''})
+  const [toastMessage, setToastMessage] = useState("");
 
   modalStatus ? showDialog() : hideDialog()
 
   const handleLoginInput = (evt)=>{
-    console.log(loginInfo)
+    
+
     changeLoginInfo((prevState)=>{
       
      return {...prevState,
@@ -41,6 +44,31 @@ const LoginModal = ({modalStatus}) => {
       }
 
     })
+  }
+
+  const handleSubmit =(evt) =>{
+    evt.preventDefault();
+
+    let flag = 0;
+  
+    for (const key in loginInfo) {
+      if (loginInfo.hasOwnProperty(key)) {
+        if (loginInfo[key] === '') {
+          
+          setToastMessage(`All fields are necessary`);
+          flag = 1;
+        }
+      }
+    }
+  
+    if (flag === 1) {
+      // Return or handle the error state
+      return;
+    } else {
+      //axios
+
+      window.location.href = '/';
+    }
   }
 
   return (
@@ -114,13 +142,16 @@ const LoginModal = ({modalStatus}) => {
           </div>
 
           <div className="flex justify-center gap-4 mt-5">
-            <button className="bg-red-500 px-6 py-2 rounded text-white hover:bg-red-600">
+            <button className="bg-red-500 px-6 py-2 rounded text-white hover:bg-red-600" onClick={handleSubmit}>
               Sign in
             </button>
           </div>
         </div>
       </div>
       
+      {toastMessage && (
+        <ToastComponent message={toastMessage} onClose={() => setToastMessage("")} />
+      )}
     </div>
   );
 };

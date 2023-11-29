@@ -7,15 +7,17 @@ import {Link} from 'react-router-dom'
 
 const Header  = ()=> {
     
-    const [loginModalOpened, changeLoginModalOpened] = useState(false);
+  const [loginModalOpened, changeLoginModalOpened] = useState(false);
   const [signUpModalOpened, changesignUpnModalOpened] = useState(false);
 
   const handleLoginModal = () => {
-    changeLoginModalOpened(!loginModalOpened);
+    console.log('login modal  ',signUpModalOpened)
+    changeLoginModalOpened((prevState)=>!prevState);
     changesignUpnModalOpened(false);
   };
   const handleSignUpModal = () => {
-    changesignUpnModalOpened(!signUpModalOpened);
+    console.log('sign up modal  ',signUpModalOpened)
+    changesignUpnModalOpened((prevState)=>!prevState);
     changeLoginModalOpened(false);
   };
    

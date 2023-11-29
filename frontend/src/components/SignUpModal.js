@@ -1,8 +1,11 @@
-import { React , useState} from "react";
+import { React , useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import Card from "./Card";
 import Footer from "./Footer";
 import Post from "./Post";
+import ToastComponent from "./Toast";
+
 
 const SignUpModal = ({modalStatus}) => {
 
@@ -10,7 +13,8 @@ const SignUpModal = ({modalStatus}) => {
     modalStatus ? showDialog() : hideDialog()
 
     const [newUser,changeNewUserDetails] = useState({username:'',password:'',email:'',phone:''})
-
+    const [toastMessage, setToastMessage] = useState("");
+    const navigate = useNavigate();
 
     
 function showDialog() {
@@ -38,12 +42,44 @@ function showDialog() {
 
   const handleInput =(e)=> {
     const { id, value } = e.target;
+
+  
+
+    
     // Update the state based on the input field's id
     changeNewUserDetails((prevState) => ({
       ...prevState,
       [id]: value
     }));
+console.log(id, value)
+   
   }
+
+
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    let flag = 0;
+  
+    for (const key in newUser) {
+      if (newUser.hasOwnProperty(key)) {
+        if (newUser[key] === '') {
+          
+          setToastMessage(`All fields are necessary`);
+          flag = 1;
+        }
+      }
+    }
+  
+    if (flag === 1) {
+      // Return or handle the error state
+      return;
+    } else {
+      //axios
+
+      window.location.href = '/';
+    }
+  };
   
   return (
     <div>
@@ -83,8 +119,8 @@ function showDialog() {
                   defaultValue={newUser.username}
                   className="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-green-500 dark:focus:border-green-500"
                   placeholder="Username"
-                  required
-                  onChange={(e)=>handleInput}
+                  
+                  onChange={handleInput}
                 />
               </div>
               <div className="mb-5">
@@ -100,8 +136,8 @@ function showDialog() {
                   defaultValue={newUser.email}
                   className="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-green-500 dark:focus:border-green-500"
                   placeholder="name@flowbite.com"
-                  required
-                  onChange={(e)=>handleInput}
+                  
+                  onChange={handleInput}
                 />
               </div>
               <div className="mb-5">
@@ -112,15 +148,16 @@ function showDialog() {
                   Phone
                 </label>
                 <input
-                  type="phone"
+                  type="number"
                   id="phone"
                   defaultValue={newUser.phone}
                   className="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-green-500 dark:focus:border-green-500"
                   placeholder="92200299202"
-                  required
-                  onChange={(e)=>handleInput}
+                  
+                  onChange={handleInput}
                 />
               </div>
+              
               <div className="mb-5">
                 <label
                   htmlFor="passwordfield"
@@ -133,21 +170,26 @@ function showDialog() {
                   id="password"
                   defaultValue={newUser.password}
                   className="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark  focus:ring-green-500 dark:focus:border-green-500"
-                  required
+                  
                   placeholder="password"
-                  onChange={(e)=>handleInput}
+                  onChange={handleInput}
                 />
               </div>
             </form>
           </div>
 
           <div className="flex justify-center gap-4 mt-5">
-            <button className="bg-red-500 px-6 py-2 rounded text-white hover:bg-red-600">
+            <button className="bg-red-500 px-6 py-2 rounded text-white hover:bg-red-600" onClick={handleSubmit}>
               Sign Up
             </button>
           </div>
         </div>
       </div>
+
+
+      {toastMessage && (
+        <ToastComponent message={toastMessage} onClose={() => setToastMessage("")} />
+      )}
     </div>
   );
 };

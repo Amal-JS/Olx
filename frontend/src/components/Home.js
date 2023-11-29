@@ -27,8 +27,8 @@ const Home = () => {
             
           </div>
 
-      
-        <ToastComponent message='hai amal well done'></ToastComponent>
+          
+        
         
     </div>
   );

@@ -3,6 +3,7 @@ import './Header.css'
 import olxlogo from '../static/olxlogo.webp';
 import LoginModal from "./LoginModal";
 import SignUpModal from "./SignUpModal";
+import {Link} from 'react-router-dom'
 
 const Header  = ()=> {
     
@@ -29,7 +30,8 @@ return(
 
 <div className='flex w-full'>
 <div className=" w-20 h-15 bg-transparent ">
-  <img className="object-scale-down h-full w-full" src={olxlogo} />
+    <Link to='/'><img className="object-scale-down h-full w-full" src={olxlogo} /></Link>
+  
 </div>
    
 <form className='w-8/12 px-5 pr-8 bg-dark'>   
@@ -48,7 +50,7 @@ return(
 <button type="button" className="bg-transparent text-xl  pr-5 w-16 mx-5 "><p className='underline font-semibold hover:no-underline hover:text-red-500' onClick={handleSignUpModal}>SignUp</p></button>
 
 
-<button type="button" className="py-2 px-5 me-2 mb-1 text-xl font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-white-800 dark:text-black-800 dark:border-gray-600 dark:hover:text-dark dark:hover:bg-white-700 w-28"><i className="fa-solid fa-plus text-xl mr-2"></i>Sell</button>
+<button type="button" className="py-2 px-5 me-2 mb-1 text-xl font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-white-800 dark:text-black-800 dark:border-gray-600 dark:hover:text-dark dark:hover:bg-white-700 w-28"><Link to='/addProduct' ><i className="fa-solid fa-plus text-xl mr-2"></i>Sell</Link></button>
 
 </div>
 

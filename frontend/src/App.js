@@ -4,12 +4,13 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
 import Post from './components/Post';
+import AddProduct from './components/AddProduct';
+
 
 
 
 
 const App = () => {
-  const customProps = { prop1: 'value1', prop2: 'value2' };
 
   return (
     <Router>
@@ -23,9 +24,11 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/post/:postId" element={<Post />} />
+        <Route path='addProduct/' element={<AddProduct />} />
+        
       </Routes>
 
-      
+
          <Footer />
 
 

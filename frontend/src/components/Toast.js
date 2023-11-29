@@ -1,7 +1,7 @@
 import {React ,useState ,useEffect} from 'react'
 
 
-const Toast = ({message}) => {
+const Toast = ({message,onClose}) => {
     const [isVisible, setIsVisible] = useState(true);
   
 
@@ -9,11 +9,13 @@ const Toast = ({message}) => {
         // Close the toast after 2000 milliseconds (2 seconds)
         const timeoutId = setTimeout(() => {
             setIsVisible(false);
+            onClose(); 
         }, 2000);
     
         // Clear the timeout when the component unmounts or when toast is closed manually
         return () => clearTimeout(timeoutId);
-      }, []);
+      }, [ onClose]);
+
     const handleClose = () => {
       setIsVisible(false);
     };
@@ -53,7 +55,7 @@ const Toast = ({message}) => {
           fill="none"
           viewBox="0 0 14 14"
         >
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
         </svg>
       </button>
     </div>
@@ -61,12 +63,11 @@ const Toast = ({message}) => {
   };
   
 
-  const ToastComponent = ({message}) => {
+  const ToastComponent = ({message,onClose}) => {
 
-    
     return (
       <div>
- <Toast message={message}/>
+ <Toast message={message} onClose={onClose}/>
       </div>
     );
   };

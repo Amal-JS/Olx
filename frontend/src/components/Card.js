@@ -1,5 +1,5 @@
 import {React} from 'react'
-import { Link } from 'react-router-dom';
+
 
 import olxlogo from '../static/olxlogo.webp';
 
@@ -9,7 +9,7 @@ return(
    
 
 <div className="w-72 max-w-sm max-h-72 bg-white  rounded-lg shadow dark:bg-white-800  m-3 p-1 shadow-2xl">
-    <a href="#">
+    
         <div>
         <img className="rounded-t-lg h-32 w-full" src={olxlogo} alt="" />
         </div>
@@ -24,7 +24,7 @@ return(
         <p className="mb-1 font-normal text-dark-400 dark:text-dark-400"> so far, in reverse chronological order.</p>
         
     </div>
-    </a>
+
 
     
 

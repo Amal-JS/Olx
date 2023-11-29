@@ -18,7 +18,7 @@ const Post = () => {
         <img className="rounded mx-3 h-full w-2/12" src={olxlogo}></img>
         </div>
         <div className="">
-        <p class="text-2xl text-left text-gray-900  dark:text-dark px-64 mt-8 mb-5 font-medium text-start">Details</p>
+        <p className="text-2xl text-left text-gray-900  dark:text-dark px-64 mt-8 mb-5 font-medium text-start">Details</p>
         </div>
         
         <div className=" w-full shadow-md p-10">
@@ -32,7 +32,7 @@ const Post = () => {
 
         </div>
         <div className="m-3">
-        <p class="text-2xl text-left text-gray-900  dark:text-dark px-64 mt-8 mb-5 font-medium text-start">Description</p>
+        <p className="text-2xl text-left text-gray-900  dark:text-dark px-64 mt-8 mb-5 font-medium text-start">Description</p>
         </div>
         <div className="m-3 shadow-md p-3">
     <p>aslfkalsfjdlsjdfljsldjflskjfdljslfkj
@@ -49,12 +49,12 @@ const Post = () => {
 
         <div className="bg-white p-3 mb-2 w=full mx-3 mt-9  ">
 
-        <p class="text-2xl text-dark font-bold m-2">Rs 92020</p>
+        <p className="text-2xl text-dark font-bold m-2">Rs 92020</p>
 
-        <p class="text-xl text-dark font-normal mb-2">sfasdfasfdasfasd safaasfasdfsa f</p>
+        <p className="text-xl text-dark font-normal mb-2">sfasdfasfdasfasd safaasfasdfsa f</p>
         <div className="flex justify-between mx-2 mb-1">
-        <p class="text-sm text-dark font-normal">Maharashtra </p>
-        <p class="text-sm text-dark font-normal">29-03-2020 </p>
+        <p className="text-sm text-dark font-normal">Maharashtra </p>
+        <p className="text-sm text-dark font-normal">29-03-2020 </p>
         </div>
         
         </div>
@@ -87,16 +87,16 @@ const Post = () => {
 
 
 <div className=" mx-2 mb-1">
-<p class="text-l text-dark font-bold mb-2">Posted in </p>
-<p class="text-sm text-dark font-normal">Maharashtra </p>
+<p className="text-l text-dark font-bold mb-2">Posted in </p>
+<p className="text-sm text-dark font-normal">Maharashtra </p>
 </div>
 
 </div>
 
 
 <div className="flex justify-between mx-8">
-<p class="text-sm text-black font-bold">AD ID 1722859347 </p>
-<p class="text-sm text-black font-bold">Report this ad</p>
+<p className="text-sm text-black font-bold">AD ID 1722859347 </p>
+<p className="text-sm text-black font-bold">Report this ad</p>
 </div>
 
 

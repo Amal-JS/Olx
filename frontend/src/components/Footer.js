@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="flex justify-evenly px-56 bg-white mt-6">
         <div>
           POPULAR LOCATIONS
-          <ul class="list-none">
+          <ul className="list-none">
             <li className="text-sm">Kolkata</li>
             <li className="text-sm">Mumbai</li>
             <li className="text-sm">Chennai</li>
@@ -21,7 +21,7 @@ const Footer = () => {
 
         <div>
           About OLX 
-          <ul class="list-none">
+          <ul className="list-none">
             <li className="text-sm">Careers</li>
             <li className="text-sm">Contact Us</li>
             <li className="text-sm">OLXPeople</li>
@@ -33,7 +33,7 @@ const Footer = () => {
 
         <div>
           POPULAR LOCATIONS
-          <ul class="list-none">
+          <ul className="list-none">
             <li className="text-sm">Kolkata</li>
             <li className="text-sm">Mumbai</li>
             <li className="text-sm">Chennai</li>
@@ -48,10 +48,10 @@ const Footer = () => {
 
           <i className="fa-brands fa-square-instagram  px-4" style={{color:"#374a4d",fontSize:'34px'}}></i>
 
-          <i class="fa-brands fa-facebook-f px-4" style={{color:"#374a4d",fontSize:'34px'}}></i>
+          <i className="fa-brands fa-facebook-f px-4" style={{color:"#374a4d",fontSize:'34px'}}></i>
 
 
-          <i class="fa-brands fa-twitter px-4" style={{color:"#374a4d",fontSize:'34px'}}></i>
+          <i className="fa-brands fa-twitter px-4" style={{color:"#374a4d",fontSize:'34px'}}></i>
 
           </div>
           <div className="h-25"></div>

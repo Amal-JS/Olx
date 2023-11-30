@@ -1,9 +1,11 @@
-import { React, useState } from "react";
+import { React, useState, useEffect} from "react";
 import Header from "./Header";
 import Card from "./Card";
 import Footer from "./Footer";
 import Post from "./Post";
 import ToastComponent from './Toast';
+import { GetContext } from "./CustomContext";
+
 
 function showDialog() {
   
@@ -27,12 +29,22 @@ function hideDialog() {
   }
 }
 
-const LoginModal = ({modalStatus}) => {
+//component
+const LoginModal = ({modalStatus,onLoginSuccess}) => {
 
   const [loginInfo,changeLoginInfo] =useState({loginEmail:'',loginPassword:''})
   const [toastMessage, setToastMessage] = useState("");
+  const {globalObject,updateGlobalObject} = GetContext();
 
-  modalStatus ? showDialog() : hideDialog()
+  //useeffect
+  useEffect(() => {
+    if (modalStatus) {
+      showDialog();
+    } else {
+      hideDialog();
+    }
+  }, [modalStatus]);
+
 
   const handleLoginInput = (evt)=>{
     
@@ -66,8 +78,20 @@ const LoginModal = ({modalStatus}) => {
       return;
     } else {
       //axios
+      
+      updateGlobalObject({
+        ...globalObject,
+        userLoggedIn:true,
+        user:{username:'amla'}
+      })
 
-      window.location.href = '/';
+      localStorage.setItem('user',globalObject.user.username)
+
+      
+      onLoginSuccess();
+     
+
+      
     }
   }
 
@@ -98,7 +122,7 @@ const LoginModal = ({modalStatus}) => {
                 {" "}
                 Help us become the safest place to sell and buy.
               </p>
-              <i className="fa-solid fa-square-phone"></i>
+              <p className="mx-3 text-xl font-bold">Login </p>
             </div>
           </div>
 

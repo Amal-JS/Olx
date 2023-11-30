@@ -3,12 +3,19 @@ import './Header.css'
 import olxlogo from '../static/olxlogo.webp';
 import LoginModal from "./LoginModal";
 import SignUpModal from "./SignUpModal";
-import {Link} from 'react-router-dom'
+import {Link , useNavigate} from 'react-router-dom'
+import { GetContext } from './CustomContext';
+import ToastComponent from './Toast';
 
 const Header  = ()=> {
     
   const [loginModalOpened, changeLoginModalOpened] = useState(false);
   const [signUpModalOpened, changesignUpnModalOpened] = useState(false);
+  const {globalObject,updateGlobalObject} = GetContext()
+  const navigate = useNavigate();
+  const [toastMessage, setToastMessage] = useState("");
+  
+  const Navigate = useNavigate();
 
   const handleLoginModal = () => {
     console.log('login modal  ',signUpModalOpened)
@@ -20,7 +27,48 @@ const Header  = ()=> {
     changesignUpnModalOpened((prevState)=>!prevState);
     changeLoginModalOpened(false);
   };
-   
+
+  const handleSuccessfulSignUp = () => {
+    // Close the signup modal
+    changesignUpnModalOpened(false);
+    // Navigate to the home page
+    changeLoginModalOpened(true);
+
+  };
+
+
+  const handleSuccessfulLogin = () => {
+    // Close the signup modal
+    changeLoginModalOpened(false);
+    // Navigate to the home page
+    // Navigate('/');
+
+  };
+
+  const handleLogout =()=>{
+
+
+    updateGlobalObject({
+      ...globalObject,
+      userLoggedIn:false,
+      user:{username:''}
+    })
+
+    
+    localStorage.removeItem('username')
+
+    navigate('/')
+
+  }
+
+  const handleAddProduct = ()=>{
+    if (globalObject.userLoggedIn){
+      navigate('/addProduct');
+    }
+    else{
+      setToastMessage('User should be logged in')
+    }
+  }
 return(
     
 
@@ -46,13 +94,28 @@ return(
     </div>
 </form>
 
-
+{
+globalObject.userLoggedIn ?   
+<div className='p-2 mx-2 flex'> 
+<p className='text-bold'>Hello,<span className='text-2xl text-red-500'>{globalObject.user.username}</span></p>
+<i className="fa-solid fa-door-open text-2xl mx-2" onClick={handleLogout}></i>
+</div>
+:
+(
+  <div className='p-2 flex mx-2'>
 <button type="button" className="bg-transparent text-xl  pr-5 w-16 "><p className='underline font-semibold hover:no-underline hover:text-red-500' onClick={handleLoginModal}>Login</p></button>
 
 <button type="button" className="bg-transparent text-xl  pr-5 w-16 mx-5 "><p className='underline font-semibold hover:no-underline hover:text-red-500' onClick={handleSignUpModal}>SignUp</p></button>
+  </div>
+)
+}
 
 
-<button type="button" className="py-2 px-5 me-2 mb-1 text-xl font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-white-800 dark:text-black-800 dark:border-gray-600 dark:hover:text-dark dark:hover:bg-white-700 w-28"><Link to='/addProduct' ><i className="fa-solid fa-plus text-xl mr-2"></i>Sell</Link></button>
+
+
+
+
+<button type="button" className="py-2 px-5 me-2 mb-1 text-xl font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-white-800 dark:text-black-800 dark:border-gray-600 dark:hover:text-dark dark:hover:bg-white-700 w-28" onClick={handleAddProduct}><i className="fa-solid fa-plus text-xl mr-2" ></i>Sell</button>
 
 </div>
 
@@ -88,8 +151,12 @@ return(
 
     </div>
 
-    <LoginModal modalStatus={loginModalOpened} />
-          <SignUpModal modalStatus={signUpModalOpened} />
+    <LoginModal modalStatus={loginModalOpened} onLoginSuccess={handleSuccessfulLogin} />
+          <SignUpModal modalStatus={signUpModalOpened} onSignUpSuccess={handleSuccessfulSignUp}/>
+
+          {toastMessage && (
+        <ToastComponent message={toastMessage} onClose={() => setToastMessage("")} />
+      )}
     </div>
 
 )

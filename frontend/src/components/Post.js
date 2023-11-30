@@ -5,8 +5,8 @@ import olxlogo from '../static/olxlogo.webp';
 
 const Post = () => {
   return (
-    <div className="flex pl-56  pr-42 justify-center mt-5" style={{backgroundColor:'#f2f4f5'}}>
-     <div className="w-9/12 mt-9 mr-12">
+    <div className="flex p-5 justify-center mt-5" style={{backgroundColor:'#f2f4f5'}}>
+     <div className="w-9/12 mt-9 mr-12 p-3">
 
         <div className=" bg-black px-20">
         <img className="max-h-96 w-full"  src={olxlogo}></img>

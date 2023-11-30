@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div>
       {/* first div */}
-      <div className="flex justify-evenly px-56 bg-white mt-6">
+      <div className="flex justify-evenly px-56 bg-white mt-6 ">
         <div>
           POPULAR LOCATIONS
           <ul className="list-none">
@@ -63,7 +63,7 @@ const Footer = () => {
 
       {/* second part div */}
       <div
-        className="w-full flex h-16 mt-4 justify-between"
+        className="w-full flex h-16 mt-4 justify-between mb-3"
         style={{ backgroundColor: "#002f34" }}
       >
         <p className="text-white px-24 mt-5"> Help - Sitemap</p>

@@ -1,4 +1,4 @@
-import { React , useState } from "react";
+import { React , useState ,useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import Card from "./Card";
@@ -34,16 +34,27 @@ function showDialog() {
 
 
   
-const SignUpModal = ({modalStatus}) => {
+const SignUpModal = ({modalStatus,onSignUpSuccess}) => {
 
-    // based on the change in the modalStatus true or false  calls the showDialog or hideDialog function
-    modalStatus ? showDialog() : hideDialog()
+    
 
     const [newUser,changeNewUserDetails] = useState({username:'',password:'',email:'',phone:''})
     const [toastMessage, setToastMessage] = useState("");
     const navigate = useNavigate();
 
- 
+
+    // based on the change in the modalStatus true or false  calls the showDialog or hideDialog function
+    
+    useEffect(() => {
+      if (modalStatus) {
+        showDialog();
+      } else {
+        hideDialog();
+      }
+    }, [modalStatus]);
+
+
+    
 
   const handleInput =(e)=> {
     const { id, value } = e.target;
@@ -82,7 +93,7 @@ console.log(id, value)
     } else {
       //axios
 
-      window.location.href = '/';
+      onSignUpSuccess()
     }
   };
   

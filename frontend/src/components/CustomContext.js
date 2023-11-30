@@ -1,4 +1,4 @@
-import {useContext , createContext ,useState} from 'react'
+import {useContext , createContext ,useState ,useEffect} from 'react'
 
 
 //global context object
@@ -11,7 +11,7 @@ export const  CustomContext = ({children}) => {
 
         {
             userLoggedIn : false,
-            user : {},
+            user : {username:''},
             isSignUpModalOpened : false,
             isLoginModalOpened :false
     })
@@ -21,6 +21,15 @@ export const  CustomContext = ({children}) => {
         setGlobalObject(newState)
 
     }
+
+
+    useEffect(()=>{
+        const user = localStorage.getItem('user')
+        // console.log('user',user)
+        console.log(globalObject)
+    })
+
+
 
     return (
         <MyContext.Provider value={{globalObject,updateGlobalObject}} >

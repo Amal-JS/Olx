@@ -5,6 +5,7 @@ import Card from "./Card";
 import Footer from "./Footer";
 import Post from "./Post";
 import ToastComponent from "./Toast";
+import axios from 'axios'
 
 
 
@@ -67,13 +68,13 @@ const SignUpModal = ({modalStatus,onSignUpSuccess}) => {
       ...prevState,
       [id]: value
     }));
-console.log(id, value)
+
    
   }
 
 
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
     let flag = 0;
   
@@ -91,9 +92,30 @@ console.log(id, value)
       // Return or handle the error state
       return;
     } else {
+      
       //axios
+      await axios.post('http://localhost:8000/user/',newUser)
+      .then(res=>{
+        
+        if(res.data.userCreation){
+          onSignUpSuccess()
+        }
+        else{
+        
+          let error_msg =  '';
 
-      onSignUpSuccess()
+          for (let key in res.data) {
+            if (res.data.hasOwnProperty(key)) {
+              error_msg = String(res.data[key]) + ','
+            }
+          }
+        
+          setToastMessage(error_msg)
+        }
+      })
+      .catch(err=>alert(err))
+
+      
     }
   };
   

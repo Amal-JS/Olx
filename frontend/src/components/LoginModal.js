@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import Post from "./Post";
 import ToastComponent from './Toast';
 import { GetContext } from "./CustomContext";
+import axios from "axios";
 
 
 function showDialog() {
@@ -58,7 +59,7 @@ const LoginModal = ({modalStatus,onLoginSuccess}) => {
     })
   }
 
-  const handleSubmit =(evt) =>{
+  const handleSubmit =async (evt) =>{
     evt.preventDefault();
 
     let flag = 0;
@@ -74,21 +75,39 @@ const LoginModal = ({modalStatus,onLoginSuccess}) => {
     }
   
     if (flag === 1) {
-      // Return or handle the error state
+      // Return 
       return;
     } else {
+      const data = { username: loginInfo.loginEmail, password: loginInfo.loginPassword };
+      
+// Convert the data object to query parameters
+const queryParams = new URLSearchParams(data);
+console.log(data)
+const url = `http://localhost:8000/user/1001?${queryParams}`;
+
       //axios
-      
-      updateGlobalObject({
-        ...globalObject,
-        userLoggedIn:true,
-        user:{username:'amla'}
-      })
+      await axios.get(url).then(res =>
+      {
+        if(res.data.validUser){
 
-      localStorage.setItem('user',globalObject.user.username)
-
+          updateGlobalObject({
+            ...globalObject,
+            userLoggedIn:true,
+            user:{username:res.data.username}
+          })
+    
+          localStorage.setItem('user',globalObject.user.username)
+    
+          
+          onLoginSuccess();
+        }
+        else{
+          setToastMessage(`Invalid credentials`);
+        }
+      }
       
-      onLoginSuccess();
+      ).catch(err=>console.log(err))
+     
      
 
       
@@ -136,11 +155,11 @@ const LoginModal = ({modalStatus,onLoginSuccess}) => {
                   Your email
                 </label>
                 <input
-                  type="email"
+                  type="text"
                   id="loginEmail"
                   defaultValue={loginInfo.loginEmail}
                   className="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-green-500 dark:focus:border-green-500"
-                  placeholder="name@flowbite.com"
+                  placeholder="samplename"
                   required
                   onChange={handleLoginInput}
                 />

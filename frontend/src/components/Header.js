@@ -31,6 +31,7 @@ const Header  = ()=> {
   const handleSuccessfulSignUp = () => {
     // Close the signup modal
     changesignUpnModalOpened(false);
+    console.log('successfulsignup')
     // Navigate to the home page
     changeLoginModalOpened(true);
 

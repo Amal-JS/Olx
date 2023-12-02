@@ -12,7 +12,7 @@ class PostViewSets(viewsets.ModelViewSet):
 
     def create(self,request):
 
-        print(request, request.data)
+        #want to get the image like this
         image_file = request.FILES.get('image')
         
         # Extract other fields from request.data
@@ -62,12 +62,14 @@ class PostViewSets(viewsets.ModelViewSet):
                 
                 user_instance = CustomUser.objects.get(username=queryset.user.username)
                 user_username = user_instance.username
+                #get serializer provided by drf convert to serialized object the query set will be converted to dictionary
+
                 serializer = self.get_serializer(queryset)
                 serialized_data = serializer.data
 
                 # # Include the username in the serialized data
                 serialized_data['user_username'] = user_username
-
+                #Response function convert to json data
                 return Response(serialized_data)
             except Post.DoesNotExist:
                 return Response({'msg': 'Provide a valid id'})
@@ -78,30 +80,29 @@ class PostViewSets(viewsets.ModelViewSet):
 
         
 class UserViewSets(viewsets.ModelViewSet):
+    # when getting all data this query set is returned 
     queryset = CustomUser.objects.all()  
     serializer_class = UserSerializer
 
 
     def create(self,request):
 
-        print(request, request.data)
         serializer = UserSerializer(data = request.data)
         if serializer.is_valid():
             serializer.save()
        
-            
             return Response({'userCreation':True})
         else:
              print(serializer.errors)
         return Response(serializer.errors,status=200)
     
     def retrieve(self,request,pk=None):
-            print(request.data)
+           
             username=request.GET.get('username','') 
             password= request.GET.get('password','') 
             try:
                 user = CustomUser.objects.get(username=username)
-                print(f"username : {user.username == username} , password : {user.password == password}  ,{user.password} , {password}")
+    
                 if user.password == password:
                     return Response({'validUser':True,'username':username})
             except CustomUser.DoesNotExist:

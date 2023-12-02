@@ -52,7 +52,7 @@ console.log('Post')
         <div className="flex justify-start m-2"> Brand : {post.brand}</div>
         <div className="flex justify-start m-2"> Price : {post.price}</div>
         <div className="flex justify-start m-2"> Time span : {post.timespan}</div>
-        <div className="flex justify-start m-2"> Place : {post.palce}</div>
+        <div className="flex justify-start m-2"> Place : {post.place}</div>
 
 
         </div>

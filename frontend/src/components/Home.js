@@ -6,10 +6,12 @@ import { BASE_URL } from "../URL/urls";
 
 const Home = () => {
   console.log('Home')
+
   const [posts,changePosts] = useState([])
 
   useEffect(()=>{
 
+    //getting the initial posts
     axios.get(BASE_URL).then(res=>changePosts(res.data)).catch(err=>alert(err))
 
   },[])

@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import Post from './components/Post';
 import AddProduct from './components/AddProduct';
+
 import { CustomContext } from './components/CustomContext';
 
 
@@ -13,6 +14,7 @@ import { CustomContext } from './components/CustomContext';
 const App = () => {
 
   return (
+    
     <Router>
     <div>
       {/* Header component */}

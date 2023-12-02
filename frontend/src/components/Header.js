@@ -14,19 +14,21 @@ const Header  = ()=> {
     
   const [loginModalOpened, changeLoginModalOpened] = useState(false);
   const [signUpModalOpened, changesignUpnModalOpened] = useState(false);
+
   const {globalObject,updateGlobalObject} = GetContext()
   const navigate = useNavigate();
+
   const [toastMessage, setToastMessage] = useState("");
-  
-  const Navigate = useNavigate();
+
 
   const handleLoginModal = () => {
-    console.log('login modal  ',signUpModalOpened)
+   
     changeLoginModalOpened((prevState)=>!prevState);
     changesignUpnModalOpened(false);
   };
+
   const handleSignUpModal = () => {
-    console.log('sign up modal  ',signUpModalOpened)
+  
     changesignUpnModalOpened((prevState)=>!prevState);
     changeLoginModalOpened(false);
   };
@@ -34,7 +36,7 @@ const Header  = ()=> {
   const handleSuccessfulSignUp = () => {
     // Close the signup modal
     changesignUpnModalOpened(false);
-    console.log('successfulsignup')
+   
     // Navigate to the home page
     changeLoginModalOpened(true);
 
@@ -98,12 +100,13 @@ return(
     </div>
 </form>
 
+{/* user logged in show the logout and username */}
 {
-globalObject.userLoggedIn ?   
+globalObject.userLoggedIn ?   (
 <div className='p-2 mx-2 flex'> 
 <p className='text-bold'>Hello,<span className='text-2xl text-red-500'>{globalObject.user.username}</span></p>
 <i className="fa-solid fa-door-open text-2xl mx-2" onClick={handleLogout}></i>
-</div>
+</div>)
 :
 (
   <div className='p-2 flex mx-2'>

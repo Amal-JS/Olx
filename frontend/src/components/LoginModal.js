@@ -7,6 +7,7 @@ import axios from "axios";
 function showDialog() {
   
   let dialog = document.getElementById("loginDialog");
+
   if (dialog) {
     dialog.classList.remove("hidden");
     setTimeout(() => {
@@ -79,7 +80,7 @@ const LoginModal = ({modalStatus,onLoginSuccess}) => {
       
 // Convert the data object to query parameters
 const queryParams = new URLSearchParams(data);
-console.log(data)
+
 const url = `http://localhost:8000/user/1001?${queryParams}`;
 
       //axios
@@ -123,6 +124,7 @@ const url = `http://localhost:8000/user/1001?${queryParams}`;
       >
         <div
           className="bg-white rounded shadow-md p-5 mx-auto my-20 w-1/4 h-full"
+          // prevent modal from closing outside of modal
           onClick={(e) => e.stopPropagation()}
         >
           <p className="text-end">
@@ -135,7 +137,7 @@ const url = `http://localhost:8000/user/1001?${queryParams}`;
             <div className="p-3 m-3 text-center">
               <i className="fa-solid fa-tv text-4xl m-3"></i>
               <p className="font-normal text-black-400 mb-2">
-                {" "}
+    
                 Help us become the safest place to sell and buy.
               </p>
               <p className="mx-3 text-xl font-bold">Login </p>
@@ -149,7 +151,7 @@ const url = `http://localhost:8000/user/1001?${queryParams}`;
                   htmlFor="email"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark"
                 >
-                  Your email
+                  Your username
                 </label>
                 <input
                   type="text"

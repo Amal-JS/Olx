@@ -1,8 +1,6 @@
 import {React} from 'react'
 
 
-import olxlogo from '../static/olxlogo.webp';
-
 const Card  = ({data})=> {
 
     console.log('Card')
@@ -28,16 +26,8 @@ return(
     </div>
 
 
-    
-
-
-
 </div>
-
-
 )
 
-
 }
-
 export default Card;

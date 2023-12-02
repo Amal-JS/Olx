@@ -2,10 +2,12 @@ import {React ,useState ,useEffect} from 'react'
 
 
 const Toast = ({message,onClose}) => {
+
     const [isVisible, setIsVisible] = useState(true);
   
 
     useEffect(() => {
+
         // Close the toast after 2000 milliseconds (2 seconds)
         const timeoutId = setTimeout(() => {
             setIsVisible(false);
@@ -16,9 +18,7 @@ const Toast = ({message,onClose}) => {
         return () => clearTimeout(timeoutId);
       }, [ onClose]);
 
-    const handleClose = () => {
-      setIsVisible(false);
-    };
+
 
   
     return isVisible ? (

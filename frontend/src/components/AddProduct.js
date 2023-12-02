@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
   console.log('Add product')
+
   const [product, setProduct] = useState({
     name: "",
     brand: "",
@@ -17,12 +18,14 @@ const AddProduct = () => {
     image: "",
     description: "",
   });
+
   const [toastMessage, setToastMessage] = useState("");
 
   const { globalObject, updateGlobalObject } = GetContext();
 
   const navigate = useNavigate();
 
+  //if someone access this url with logged in 
   useEffect(() => {
     if (!globalObject.userLoggedIn) {
       navigate("/");
@@ -95,7 +98,7 @@ const AddProduct = () => {
         })
         .then((res) => 
         {
-          console.log(res)
+        
           if(res.data.postCreated){
             setToastMessage('Ad created')
 

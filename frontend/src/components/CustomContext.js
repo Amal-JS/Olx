@@ -9,28 +9,25 @@ export const  CustomContext = ({children}) => {
     console.log('Custom context')
     const [globalObject , setGlobalObject] = useState(
 
+        //global state contains the an object that holds a key which is userloggedin true or false and a key user and value username of logged in user
         {
             userLoggedIn : false,
             user : {username:''},
-            isSignUpModalOpened : false,
-            isLoginModalOpened :false
+         
     })
 
-
+    // function to update the state
     const updateGlobalObject  = (newState)=>{
         setGlobalObject(newState)
 
     }
 
-
-    useEffect(()=>{
-        const user = localStorage.getItem('user')
-       
-    })
-
-
-
     return (
+
+        //Made the custom context and returning the Mycontext with the value an object which holds the userloggedin and username 
+        //returning it
+        //Without passing the children prop and rendering the children within the <MyContext.Provider>, 
+        //the nested components wouldn't have access to the context provided by <MyContext.Provider>
         <MyContext.Provider value={{globalObject,updateGlobalObject}} >
             {children}
         </MyContext.Provider>

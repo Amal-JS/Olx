@@ -4,12 +4,15 @@ import { GetContext } from "./CustomContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+
 const AddProduct = () => {
+  console.log('Add product')
   const [product, setProduct] = useState({
     name: "",
     brand: "",
     price: "",
     timespan: "",
+    price :0,
     place: "",
     image: "",
     description: "",

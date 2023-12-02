@@ -37,7 +37,7 @@ function showDialog() {
   
 const SignUpModal = ({modalStatus,onSignUpSuccess}) => {
 
-    
+  console.log('SignUpmodal')
 
     const [newUser,changeNewUserDetails] = useState({username:'',password:'',email:'',phone:''})
     const [toastMessage, setToastMessage] = useState("");

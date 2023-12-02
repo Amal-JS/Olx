@@ -1,4 +1,4 @@
-import {React , useState} from 'react'
+import {React , useState  } from 'react'
 import './Header.css'
 import olxlogo from '../static/olxlogo.webp';
 import LoginModal from "./LoginModal";
@@ -7,7 +7,10 @@ import {Link , useNavigate} from 'react-router-dom'
 import { GetContext } from './CustomContext';
 import ToastComponent from './Toast';
 
+
 const Header  = ()=> {
+
+  console.log('Header')
     
   const [loginModalOpened, changeLoginModalOpened] = useState(false);
   const [signUpModalOpened, changesignUpnModalOpened] = useState(false);

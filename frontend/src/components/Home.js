@@ -1,12 +1,18 @@
-import { React } from "react";
-
+import { React , useState , useEffect } from "react";
 import Card from "./Card";
-
 import { Link } from "react-router-dom";
-
+import axios from 'axios'
+import { BASE_URL } from "../URL/urls";
 
 const Home = () => {
-  
+  console.log('Home')
+  const [posts,changePosts] = useState([])
+
+  useEffect(()=>{
+
+    axios.get(BASE_URL).then(res=>changePosts(res.data)).catch(err=>alert(err))
+
+  },[])
 
   return (
     <div>
@@ -17,11 +23,14 @@ const Home = () => {
           </p>
 
           <div className=" flex flex-wrap px-64 justify-evenly">
-            <Link to="post/1"><Card /></Link>
-            <Link to="post/2"><Card /></Link>
-            <Link to="post/3"><Card /></Link>
-            <Link to="post/4"><Card /></Link>
-            <Link to="post/5"><Card /></Link>
+         
+
+
+            { posts && 
+              posts.map(data => {
+                return <Link to={`post/${data.id}`} key={data.id}> <Card data={data} /></Link>
+              })
+            }
 
 
             

@@ -15,6 +15,7 @@ class Post(models.Model):
     description = models.TextField()
     place = models.CharField(max_length=100)
     timespan = models.CharField(max_length=30)
+    price = models.IntegerField(default=0)
     image = models.ImageField(upload_to='post_images',null=True,blank=True)
 
     def __str__(self) -> str:

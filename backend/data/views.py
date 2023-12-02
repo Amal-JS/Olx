@@ -22,6 +22,7 @@ class PostViewSets(viewsets.ModelViewSet):
         price = request.data.get('price')
         timespan = request.data.get('timespan')
         place = request.data.get('place')
+        price = request.data.get('price')
         description = request.data.get('description')
 
         try:
@@ -37,6 +38,7 @@ class PostViewSets(viewsets.ModelViewSet):
             'price': price,
             'timespan': timespan,
             'place': place,
+            'price':price,
             'description': description,
             'image': image_file,
         }

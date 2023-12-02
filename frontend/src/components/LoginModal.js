@@ -1,8 +1,4 @@
-import { React, useState, useEffect} from "react";
-import Header from "./Header";
-import Card from "./Card";
-import Footer from "./Footer";
-import Post from "./Post";
+import { React, useState, useEffect } from "react";
 import ToastComponent from './Toast';
 import { GetContext } from "./CustomContext";
 import axios from "axios";
@@ -32,6 +28,7 @@ function hideDialog() {
 
 //component
 const LoginModal = ({modalStatus,onLoginSuccess}) => {
+  console.log('Login modal')
 
   const [loginInfo,changeLoginInfo] =useState({loginEmail:'',loginPassword:''})
   const [toastMessage, setToastMessage] = useState("");

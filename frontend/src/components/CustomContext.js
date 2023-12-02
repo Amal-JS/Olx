@@ -6,7 +6,7 @@ const MyContext = createContext()
 
 //component which holds the global state
 export const  CustomContext = ({children}) => {
-
+    console.log('Custom context')
     const [globalObject , setGlobalObject] = useState(
 
         {
@@ -25,8 +25,7 @@ export const  CustomContext = ({children}) => {
 
     useEffect(()=>{
         const user = localStorage.getItem('user')
-        // console.log('user',user)
-        console.log(globalObject)
+       
     })
 
 

@@ -6,6 +6,7 @@ const MyContext = createContext()
 
 //component which holds the global state
 export const  CustomContext = ({children}) => {
+
     console.log('Custom context')
     const [globalObject , setGlobalObject] = useState(
 
@@ -18,9 +19,22 @@ export const  CustomContext = ({children}) => {
 
     // function to update the state
     const updateGlobalObject  = (newState)=>{
+        console.log('state updated ',newState)
         setGlobalObject(newState)
 
     }
+
+    useEffect(()=>{
+        const userData = localStorage.getItem('user')
+        if (userData !== null){
+            setGlobalObject({
+                userLoggedIn:true,
+                user:{username:userData}
+            })
+            console.log(globalObject)
+        }
+    },[])
+
 
     return (
 

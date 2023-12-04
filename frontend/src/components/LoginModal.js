@@ -88,14 +88,15 @@ const url = `http://localhost:8000/user/1001?${queryParams}`;
       {
         if(res.data.validUser){
 
-          updateGlobalObject({
-            ...globalObject,
-            userLoggedIn:true,
-            user:{username:res.data.username}
-          })
-    
-          localStorage.setItem('user',globalObject.user.username)
-    
+        
+          
+          localStorage.setItem('user',res.data.username)
+     // Update globalObject only after localStorage is updated
+     updateGlobalObject({
+      
+      userLoggedIn: true,
+      user: { username: res.data.username }
+    });
           
           onLoginSuccess();
         }

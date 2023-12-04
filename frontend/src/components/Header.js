@@ -61,7 +61,7 @@ const Header  = ()=> {
     })
 
     
-    localStorage.removeItem('username')
+    localStorage.removeItem('user')
 
     navigate('/')
 

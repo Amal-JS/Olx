@@ -137,7 +137,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOWED_ORIGINS = [
-    "https://olx-clone-ayjphyuws-olxclonees-projects-87d8cc23.vercel.app/", 
+    "https://olx-clone-ayjphyuws-olxclonees-projects-87d8cc23.vercel.app", 
      "https://76.76.21.164" # Replace with the origin of your React app
 ]
 

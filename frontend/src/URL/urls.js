@@ -1,1 +1,1 @@
-export const BASE_URL = "https://olx-khaki-mu.vercel.app/posts/";
+export const BASE_URL = "https://olx-git-master-olxclonees-projects-87d8cc23.vercel.app/posts/";

@@ -1,1 +1,1 @@
-export const BASE_URL = "http://127.0.0.1:8000/posts/";
+export const BASE_URL = "https://olx-khaki-mu.vercel.app/posts/";

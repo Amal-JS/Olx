@@ -81,7 +81,7 @@ const LoginModal = ({modalStatus,onLoginSuccess}) => {
 // Convert the data object to query parameters
 const queryParams = new URLSearchParams(data);
 
-const url = `http://localhost:8000/user/1001?${queryParams}`;
+const url = `https://olx-khaki-mu.vercel.app/user/1001?${queryParams}`;
 
       //axios
       await axios.get(url).then(res =>

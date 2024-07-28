@@ -90,7 +90,7 @@ const SignUpModal = ({modalStatus,onSignUpSuccess}) => {
     } else {
       
       //axios
-      await axios.post('http://localhost:8000/user/',newUser)
+      await axios.post('https://olx-khaki-mu.vercel.app/user/',newUser)
       .then(res=>{
         
         if(res.data.userCreation){
